@@ -65,10 +65,12 @@
     <Compile Include="Assets\Scripts\Skill\GrabSkill.cs" />
     <Compile Include="Assets\Scripts\Effect\PullEffect.cs" />
     <Compile Include="Assets\Scripts\Effect\ProjectileEffect.cs" />
+    <Compile Include="Assets\ScriptableData\CostData.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Actor.cs" />
+    <Compile Include="Assets\ScriptableData\ProjectileData.cs" />
     <Compile Include="Assets\Scripts\Skill.cs" />
-    <Compile Include="Assets\ScriptableData\GrabData.cs" />
+    <Compile Include="Assets\ScriptableData\PullData.cs" />
     <Compile Include="Assets\Scripts\Grab.cs" />
   </ItemGroup>
   <ItemGroup>

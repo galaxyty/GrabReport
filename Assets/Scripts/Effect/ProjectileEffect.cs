@@ -5,8 +5,17 @@ using UnityEngine;
 // 투사체 발사 효과.
 public class ProjectileEffect : Effect
 {
+    // 투사체 데이터.
+    private ProjectileData ProjectileData;
+
     public override void Apply(Actor source, Actor target)
     {
-        Debug.Log("투사체 발사");
+        // 정면으로 감.
+        //transform.Translate(-Vector3.back * ProjectileData.MoveSpeed * Time.deltaTime);        
+    }
+
+    public void SetProjectileData(ProjectileData _data)
+    {
+        ProjectileData = _data;
     }
 }

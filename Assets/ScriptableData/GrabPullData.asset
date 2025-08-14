@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d959b05e65da59341ac0f0c52177a947, type: 3}
-  m_Name: GrabData
+  m_Script: {fileID: 11500000, guid: 8188cd32e51abeb4496be94f1af6812f, type: 3}
+  m_Name: GrabPullData
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
-  Distance: 7
-  Mp: 2
   Power: 13
-  StopDistance: 5
-  GrabObject: {fileID: 5394003414308043879, guid: a8adde8fb77d9fc48ad8015999ea2ecf, type: 3}
+  StopDistance: 2.5

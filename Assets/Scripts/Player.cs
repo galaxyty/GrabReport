@@ -18,26 +18,41 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Transform m_FireTransform;
 
-    [Header("그랩 스킬 데이터")]
+    [Header("그랩 마나 소모 데이터")]
     [SerializeField]
-    private GrabData m_GrabData;
+    private CostData m_GrabCostData;
+
+    [Header("그랩 투사체 데이터")]
+    [SerializeField]
+    private ProjectileData m_GrabProjectileData;
+
+    [Header("그랩 끌어당기는 데이터")]
+    [SerializeField]
+    private PullData m_GrabPullData;
 
     // 그랩.
-    private Grab m_Grab;
+    private Grab m_Grab;    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameObject obj = Resources.Load<GameObject>("Grab");
+
         // 그랩 생성.
-        GameObject grab = Instantiate(m_GrabData.GrabObject);        
+        GameObject grab = Instantiate(obj);
 
         // 그랩 스크립트.
-        m_Grab = grab.GetComponent<Grab>();
+        m_Grab = grab.GetComponent<Grab>();        
+
+        m_Grab.PlayerActor = m_Actor;
+
+        // 그랩 데이터 셋팅.
+        m_Grab.SetCostData(m_GrabCostData);
+        m_Grab.SetProjectileData(m_GrabProjectileData);
+        m_Grab.SetPullData(m_GrabPullData);
 
         // 그랩 스킬효과 셋팅.
         m_Grab.GrabSkill.SetEffect();
-
-        m_Grab.PlayerActor = m_Actor;
     }
 
     // Update is called once per frame
@@ -59,7 +74,6 @@ public class Player : MonoBehaviour
     {
         m_Grab.transform.localPosition = m_FireTransform.position;
         m_Grab.gameObject.SetActive(true);
-        m_Grab.GrabSkill.ResetEffect();
         m_Grab.GrabSkill.ApplySkill(m_Actor, null);
     }
 

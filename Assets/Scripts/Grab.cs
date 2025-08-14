@@ -4,12 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Grab : MonoBehaviour
-{
-    // 그랩 데이터.
-    [Header("그랩 데이터")]
-    [SerializeField]
-    private GrabData m_GrabData;
-
+{    
     // 그랩 스킬 클래스.
     private Skill m_GrabSkill = new GrabSkill();
 
@@ -24,6 +19,24 @@ public class Grab : MonoBehaviour
 
     public Actor PlayerActor;
 
+    public void SetCostData(CostData _data)
+    {
+        GrabSkill grabSkill = m_GrabSkill as GrabSkill;
+        grabSkill.SetCostData(_data);
+    }
+
+    public void SetProjectileData(ProjectileData _data)
+    {
+        GrabSkill grabSkill = m_GrabSkill as GrabSkill;
+        grabSkill.SetProjectileData(_data);
+    }
+
+    public void SetPullData(PullData _data)
+    {
+        GrabSkill grabSkill = m_GrabSkill as GrabSkill;
+        grabSkill.SetPullData(_data);
+    }
+
     private void OnEnable()
     {
         // 정면 방향을 바라보는 곳으로 바꿈.
@@ -33,15 +46,14 @@ public class Grab : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        if (Vector3.Distance(PlayerActor.transform.position, transform.position) >= m_GrabData.Distance)
-        {
-            gameObject.SetActive(false);
-            m_GrabSkill.ResetEffect();
-        }
-        else
-        {            
-            transform.Translate(-Vector3.back * m_GrabData.MoveSpeed * Time.deltaTime);
-        }        
+        //if (Vector3.Distance(PlayerActor.transform.position, transform.position) >= m_GrabData.Distance)
+        //{
+        //    gameObject.SetActive(false);
+        //}
+        //else
+        //{            
+        //    transform.Translate(-Vector3.back * m_GrabData.MoveSpeed * Time.deltaTime);
+        //}        
     }
 
     private void OnCollisionEnter(Collision collision)
