@@ -15,8 +15,14 @@ public class GrabSkill : Skill
     public override void SetEffect()
     {
         // 자원 소모 -> 투사체 발사 -> 끌어오기.
+        // 시퀀스 개념으로 동작.
         AddEffect(new CostEffect());
-        AddEffect(new ProjectileEffect());
+
+        // 투사체에서 한번 멈출 것.
+        Effect project = new ProjectileEffect();
+        project.SetBreak(true);
+        AddEffect(project);
+
         AddEffect(new PullEffect());
     }
 }

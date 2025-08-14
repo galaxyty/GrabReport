@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Skill
 {
+    private int m_ListIndex = 0;
+
     private List<Effect> EffectList {get;} = new();
 
     public abstract bool ApplySkill(Actor source, Actor target);
@@ -20,9 +22,13 @@ public abstract class Skill
     // 스킬 효과 사용.
     protected void ApplyEffect(Actor source, Actor target)
     {
-        foreach (Effect effect in EffectList)
-        {
-            effect.Apply(source, target);
+        EffectList[m_ListIndex].Apply(source, target);
+
+        if (EffectList[m_ListIndex++].IsBreak == true)
+        {            
+            return;
         }
+
+        ApplyEffect(source, target);
     }
 }

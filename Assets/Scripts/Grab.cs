@@ -22,11 +22,6 @@ public class Grab : MonoBehaviour
         private set { }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
     // Update is called once per frame
     void Update()
     {        
@@ -35,7 +30,7 @@ public class Grab : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // 임시로 이름으로 확인 시킴
+        // 임시 방편. 이름으로 확인 시킴
         if (collision.gameObject.name.Equals("EnemyCapsule"))
         {
             m_GrabSkill.ApplySkill(null, null);

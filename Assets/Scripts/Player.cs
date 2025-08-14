@@ -56,5 +56,6 @@ public class Player : MonoBehaviour
     {
         m_Grab.transform.localPosition = m_FireTransform.position;
         m_Grab.gameObject.SetActive(true);
+        m_Grab.GrabSkill.ApplySkill(null, null);
     }
 }

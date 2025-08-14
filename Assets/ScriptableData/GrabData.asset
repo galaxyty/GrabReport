@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d959b05e65da59341ac0f0c52177a947, type: 3}
   m_Name: GrabData
   m_EditorClassIdentifier: 
+  MoveSpeed: 10
+  Range: 6
+  Mp: 2
+  GrabObject: {fileID: 5394003414308043879, guid: a8adde8fb77d9fc48ad8015999ea2ecf, type: 3}
