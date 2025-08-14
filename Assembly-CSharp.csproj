@@ -60,10 +60,10 @@
     <Analyzer Include="C:\Program Files\Unity 2022.3.45f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\OnewaveGames\Scripts\Actor.cs" />
-    <Compile Include="Assets\OnewaveGames\Scripts\Player.cs" />
-    <Compile Include="Assets\OnewaveGames\Scripts\Skill.cs" />
-    <Compile Include="Assets\OnewaveGames\Scripts\Effect.cs" />
+    <Compile Include="Assets\Scripts\Effect.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Actor.cs" />
+    <Compile Include="Assets\Scripts\Skill.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
