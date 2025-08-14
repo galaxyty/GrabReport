@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -25,6 +24,12 @@ public class Grab : MonoBehaviour
 
     public Actor PlayerActor;
 
+    private void OnEnable()
+    {
+        // 정면 방향을 바라보는 곳으로 바꿈.
+        transform.forward = PlayerActor.transform.forward;
+    }
+
     // Update is called once per frame
     void Update()
     {        
@@ -34,7 +39,7 @@ public class Grab : MonoBehaviour
             m_GrabSkill.ResetEffect();
         }
         else
-        {
+        {            
             transform.Translate(-Vector3.back * m_GrabData.MoveSpeed * Time.deltaTime);
         }        
     }

@@ -61,4 +61,20 @@ public class Player : MonoBehaviour
         m_Grab.GrabSkill.ResetEffect();
         m_Grab.GrabSkill.ApplySkill(m_Actor, null);
     }
+
+    // 마우스 회전.
+    private void OnLook(InputValue value)
+    {
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 24.0f));
+
+        Vector3 direction = worldPosition - transform.position;
+        direction.y = 0f; // 수직 회전 방지
+
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+        }
+    }    
 }

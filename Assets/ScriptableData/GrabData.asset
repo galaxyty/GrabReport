@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: GrabData
   m_EditorClassIdentifier: 
   MoveSpeed: 10
-  Range: 6
+  Distance: 7
   Mp: 2
+  Power: 13
+  StopDistance: 5
   GrabObject: {fileID: 5394003414308043879, guid: a8adde8fb77d9fc48ad8015999ea2ecf, type: 3}
