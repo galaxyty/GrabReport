@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 이동.
         transform.Translate(m_MoveDirection * m_MoveSpeed * Time.deltaTime);
     }
 
@@ -66,6 +67,8 @@ public class Player : MonoBehaviour
     private void OnLook(InputValue value)
     {
         Vector2 mousePosition = Mouse.current.position.ReadValue();
+
+        // 스크린 좌표를 월드 좌표로 변환.
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 24.0f));
 
         Vector3 direction = worldPosition - transform.position;
