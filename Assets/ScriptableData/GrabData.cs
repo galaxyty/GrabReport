@@ -11,11 +11,19 @@ public class GrabData : ScriptableObject
 
     [Header("±×·¦ »ç°Å¸®")]
     [SerializeField]
-    public float Range;
+    public float Distance;
 
     [Header("±×·¦ ¸¶³ª¼Ò¸ð·®")]
     [SerializeField]
-    public float Mp;
+    public int Mp;
+
+    [Header("±×·¦ ²ø¾î ´ç±â´Â Èû")]
+    [SerializeField]
+    public float Power;
+
+    [Header("±×·¦ ´ë»ó ¸ØÃß´Â °Å¸®")]
+    [SerializeField]
+    public float StopDistance;
 
     [Header("±×·¦ ¿ÀºêÁ§Æ®")]
     [SerializeField]

@@ -7,6 +7,6 @@ public class CostEffect : Effect
 {
     public override void Apply(Actor source, Actor target)
     {
-        Debug.Log("자원 소모");
+        Debug.Log("자원 소모 " + source.GrabData.Mp);
     }
 }

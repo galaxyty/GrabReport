@@ -18,7 +18,7 @@ public class GrabSkill : Skill
         // 시퀀스 개념으로 동작.
         AddEffect(new CostEffect());
 
-        // 투사체에서 한번 멈출 것.
+        // 투사체에서 시퀀스가 한번 멈추고 다시 재생 시 다음 실행.
         Effect project = new ProjectileEffect();
         project.SetBreak(true);
         AddEffect(project);

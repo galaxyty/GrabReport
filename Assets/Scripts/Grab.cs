@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -22,10 +23,20 @@ public class Grab : MonoBehaviour
         private set { }
     }
 
+    public Actor PlayerActor;
+
     // Update is called once per frame
     void Update()
     {        
-        transform.Translate(-Vector3.back * m_GrabData.MoveSpeed * Time.deltaTime);
+        if (Vector3.Distance(PlayerActor.transform.position, transform.position) >= m_GrabData.Distance)
+        {
+            gameObject.SetActive(false);
+            m_GrabSkill.ResetEffect();
+        }
+        else
+        {
+            transform.Translate(-Vector3.back * m_GrabData.MoveSpeed * Time.deltaTime);
+        }        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -33,7 +44,8 @@ public class Grab : MonoBehaviour
         // 임시 방편. 이름으로 확인 시킴
         if (collision.gameObject.name.Equals("EnemyCapsule"))
         {
-            m_GrabSkill.ApplySkill(null, null);
+            m_GrabSkill.ApplySkill(PlayerActor, collision.gameObject.GetComponent<Actor>());
+            gameObject.SetActive(false);
         }
     }
 }

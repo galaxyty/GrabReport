@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
 
         // 그랩 스킬효과 셋팅.
         m_Grab.GrabSkill.SetEffect();
+
+        m_Grab.PlayerActor = m_Actor;
     }
 
     // Update is called once per frame
@@ -56,6 +58,7 @@ public class Player : MonoBehaviour
     {
         m_Grab.transform.localPosition = m_FireTransform.position;
         m_Grab.gameObject.SetActive(true);
-        m_Grab.GrabSkill.ApplySkill(null, null);
+        m_Grab.GrabSkill.ResetEffect();
+        m_Grab.GrabSkill.ApplySkill(m_Actor, null);
     }
 }

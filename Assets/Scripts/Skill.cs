@@ -22,13 +22,28 @@ public abstract class Skill
     // 스킬 효과 사용.
     protected void ApplyEffect(Actor source, Actor target)
     {
+        // 모든 효과를 다 거쳤다면.
+        if (m_ListIndex >= EffectList.Count)
+        {
+            m_ListIndex = 0;
+            return;
+        }
+
+        // 효과 실행.
         EffectList[m_ListIndex].Apply(source, target);
 
+        // 효과 시퀀스가 중간에 멈추는지 확인.
         if (EffectList[m_ListIndex++].IsBreak == true)
         {            
             return;
         }
 
+        // 재귀.
         ApplyEffect(source, target);
+    }
+
+    public void ResetEffect()
+    {
+        m_ListIndex = 0;
     }
 }
