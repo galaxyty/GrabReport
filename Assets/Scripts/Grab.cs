@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+// 이 투사체는 맞으면 대상에게 끌려가는 효과가 있음.
 public class Grab : MonoBehaviour
 {
     [Header("그랩 투사체 데이터")]
