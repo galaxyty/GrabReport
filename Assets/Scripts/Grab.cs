@@ -52,7 +52,7 @@ public class Grab : MonoBehaviour
         // 임시 방편. 이름으로 확인 시킴
         if (collision.gameObject.name.Equals("EnemyCapsule"))
         {
-            m_PullSkill.ApplySkill(PlayerActor, collision.gameObject.GetComponent<Actor>());
+            m_PullSkill.ApplySkill(PlayerActor, collision.transform.parent.gameObject.GetComponent<Actor>());
             gameObject.SetActive(false);
         }
     }

@@ -24,6 +24,10 @@ public class Actor : MonoBehaviour
 
     private Vector3 m_Pos;
 
+    private float m_Power;
+
+    private float m_StopDistance;
+
     public void ApplySkill(Actor target)
     {
         
@@ -31,24 +35,27 @@ public class Actor : MonoBehaviour
 
     private void Update()
     {
-        //if (m_IsPull == true)
-        //{
-        //    if (Vector3.Distance(transform.position, m_Pos) <= m_GrabData.StopDistance)
-        //    {
-        //        m_IsPull = false;
-        //    }
-        //    else
-        //    {
-        //        transform.position -= m_Vec3 * m_GrabData.Power * Time.deltaTime;
-        //    }            
-        //}
+        if (m_IsPull == true)
+        {
+            if (Vector3.Distance(transform.position, m_Pos) <= m_StopDistance)
+            {
+                m_IsPull = false;
+            }
+            else
+            {
+                transform.position -= m_Vec3 * m_Power * Time.deltaTime;
+            }
+        }
     }
 
-    public void PullObject(Vector3 _vec3, Vector3 _targetPos)
+    public void PullObject(Vector3 _vec3, Vector3 _targetPos, float _power, float _stopDistance)
     {
         _vec3.y = 0.0f;
         m_IsPull = true;
         m_Vec3 = _vec3;
         m_Pos = _targetPos;
+
+        m_Power = _power;
+        m_StopDistance = _stopDistance;
     }
 }

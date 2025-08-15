@@ -2,20 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 끌어오기 스킬.
 public class PullSkill : Skill
 {
-    // 투사체 데이터.
+    // 끌어오는 데이터.
     private PullData m_PullData;
 
     public override bool ApplySkill(Actor source, Actor target)
     {
-        Debug.Log("끌어오기 : " + m_PullData.StopDistance);
-        return true;
+        foreach (Effect effect in EffectList)
+        {
+            effect.Apply(source, target);
+        }
+
+        return true;              
     }
 
     public override void SetEffect()
     {
-        // 투사체 효과 셋팅.
+        // 끌어오는 효과 셋팅.
         PullEffect pullEffect = new();
         pullEffect.SetData(m_PullData);
         AddEffect(pullEffect);
