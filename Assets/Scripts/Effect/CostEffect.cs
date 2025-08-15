@@ -10,6 +10,8 @@ public class CostEffect : Effect
 
     public override void Apply(Actor source, Actor target)
     {
+        source.UseMP(CostData.Mp);
+
         Debug.Log("³²Àº MP : " + source.Mp);
     }
 

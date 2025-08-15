@@ -11,7 +11,7 @@ public class CostSkill : Skill
     public override bool ApplySkill(Actor source, Actor target)
     {
         // 마나 조건에 만족하여 스킬이 사용 가능한지 확인.
-        if (m_CostData.Mp >= 2)
+        if (m_CostData.Mp <= source.Mp)
         {
             // 스킬 사용 가능함.
             foreach (Effect effect in EffectList)

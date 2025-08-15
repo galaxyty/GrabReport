@@ -13,10 +13,7 @@ public class Actor : MonoBehaviour
         {
             return m_Mp;
         }
-        set
-        {
-            m_Mp = value;
-        }
+        private set { }
     }
 
     // 끌어당길 것인가?.
@@ -50,6 +47,12 @@ public class Actor : MonoBehaviour
     {
         OnPullObject();
         OnMoveFoward();
+    }
+
+    // 마나 소모.
+    public void UseMP(int _mp)
+    {
+        m_Mp -= _mp;
     }
 
     // 직진 함수.
