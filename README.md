@@ -14,4 +14,4 @@ PullSkill.cs : 대상을 끌어오는 역할을 하는 클래스입니다.<br>
 ## Effect를 상속받은 스크립트
 CostEffect.cs : 마나 소모 기능을 담당합니다.<br>
 ProjectileEffect.cs : 투사체 발사 기능을 담당합니다. 행위는 Actor 클래스에 정의 된 OnMoveFoward 함수로 실행을 담당합니다.<br>
-PullEffect.cs : 대상을 끌어드는 기능을 담당합니다. 행위는 Actor 클래스에 정의 된 OnPullObject 함수로 실행을 담당합니다.<br>
+PullEffect.cs : 대상을 끌어들이는 기능을 담당합니다. 행위는 Actor 클래스에 정의 된 OnPullObject 함수로 실행을 담당합니다.<br>
