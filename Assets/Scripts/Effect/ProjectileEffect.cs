@@ -10,15 +10,8 @@ public class ProjectileEffect : Effect
 
     public override void Apply(Actor source, Actor target)
     {
-        // 정면으로 감.
-        if (Vector3.Distance(target.transform.position, source.transform.position) >= ProjectileData.Distance)
-        {
-            source.gameObject.SetActive(false);
-        }
-        else
-        {
-            source.transform.Translate(-Vector3.back * ProjectileData.MoveSpeed * Time.deltaTime);
-        }
+        // 직진 데이터 셋팅.
+        source.SetMoveFoward(Vector3.Distance(target.transform.position, source.transform.position), ProjectileData);
     }
 
     public void SetData(ProjectileData _data)

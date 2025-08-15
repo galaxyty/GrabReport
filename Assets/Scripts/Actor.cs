@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Actor : MonoBehaviour
 {
+    // 마나.
     private int m_Mp = 100;
 
     public int Mp
@@ -18,15 +19,27 @@ public class Actor : MonoBehaviour
         }
     }
 
+    // 끌어당길 것인가?.
     private bool m_IsPull = false;
 
-    private Vector3 m_Vec3;
+    // 정규환 된 방향 벡터.
+    private Vector3 m_DirectionNor;
 
-    private Vector3 m_Pos;
+    // 타겟 벡터.
+    private Vector3 m_TargetPos;
 
-    private float m_Power;
+    // 끌어당기는 힘.
+    private float m_PullPower;
 
-    private float m_StopDistance;
+    // 끌어당겨서 대상과 멈출 거리.
+    private float m_PullStopDistance;
+
+    // 직진 할 것인가?.
+    private bool m_IsMoveFoward = false;
+
+    private float m_Distance;
+
+    ProjectileData m_ProjectileData;
 
     public void ApplySkill(Actor target)
     {
@@ -35,27 +48,69 @@ public class Actor : MonoBehaviour
 
     private void Update()
     {
+        OnPullObject();
+        OnMoveFoward();
+    }
+
+    // 직진 함수.
+    private void OnMoveFoward()
+    {
+        if (m_IsMoveFoward == false)
+        {
+            return;
+        }
+
+        // 정면으로 감.
+        if (m_Distance >= m_ProjectileData.Distance)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            transform.Translate(-Vector3.back * m_ProjectileData.MoveSpeed * Time.deltaTime);
+        }
+    }
+
+    // 끌어당기는 함수.
+    private void OnPullObject()
+    {
         if (m_IsPull == true)
         {
-            if (Vector3.Distance(transform.position, m_Pos) <= m_StopDistance)
+            // 대상으로 끌어당김.
+            if (Vector3.Distance(transform.position, m_TargetPos) <= m_PullStopDistance)
             {
                 m_IsPull = false;
             }
             else
             {
-                transform.position -= m_Vec3 * m_Power * Time.deltaTime;
+                transform.position -= m_DirectionNor * m_PullPower * Time.deltaTime;
             }
         }
     }
 
-    public void SetPullObject(Vector3 _vec3, Vector3 _targetPos, float _power, float _stopDistance)
+    /// <summary>
+    /// 직진하는 스킬 효과 데이터 세팅.
+    /// </summary>
+    public void SetMoveFoward(float _distance, ProjectileData _data)
     {
-        _vec3.y = 0.0f;
-        m_IsPull = true;
-        m_Vec3 = _vec3;
-        m_Pos = _targetPos;
+        m_IsMoveFoward = true;
+        m_Distance = _distance;
+        m_ProjectileData = _data;
+    }
 
-        m_Power = _power;
-        m_StopDistance = _stopDistance;
+    /// <summary>
+    /// 끌어당기는 스킬 효과 데이터 세팅.
+    /// </summary>    
+    public void SetPullData(Vector3 _directionNor, Vector3 _targetPos, float _power, float _stopDistance)
+    {
+        // 수직 방향은 이동 안함.
+        _directionNor.y = 0.0f;
+
+        // 끌어갈 방향 벡터, 타겟 위치 등 기타 데이터 셋팅.
+        m_IsPull = true;
+        m_DirectionNor = _directionNor;
+        m_TargetPos = _targetPos;
+        m_PullPower = _power;
+        m_PullStopDistance = _stopDistance;
     }
 }

@@ -44,6 +44,7 @@ public class Grab : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 투사체 발사 스킬.
         m_ProjectileSkill.ApplySkill(m_Actor, PlayerActor);              
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 투사체 발사 스킬.
 public class ProjectileSkill : Skill
 {
     // 투사체 데이터.
