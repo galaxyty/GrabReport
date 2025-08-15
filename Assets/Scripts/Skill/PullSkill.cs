@@ -26,8 +26,8 @@ public class PullSkill : Skill
         AddEffect(pullEffect);
     }
 
-    public void SetData(PullData _data)
+    public override void SetData<T>(T _data)
     {
-        m_PullData = _data;
+        m_PullData = _data as PullData;
     }
 }

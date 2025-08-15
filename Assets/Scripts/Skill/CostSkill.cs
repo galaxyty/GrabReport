@@ -35,8 +35,8 @@ public class CostSkill : Skill
         AddEffect(costEffect);
     }
 
-    public void SetData(CostData _data)
+    public override void SetData<T>(T _data)
     {
-        m_CostData = _data;
+        m_CostData = _data as CostData;
     }
 }

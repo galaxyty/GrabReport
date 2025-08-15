@@ -16,4 +16,6 @@ public abstract class Skill
 
     // 효과 셋팅.
     public abstract void SetEffect();
+
+    public abstract void SetData<T>(T _data);
 }

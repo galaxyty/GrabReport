@@ -26,8 +26,8 @@ public class ProjectileSkill : Skill
         AddEffect(projectEffect);
     }
 
-    public void SetData(ProjectileData _data)
+    public override void SetData<T>(T _data)
     {
-        m_ProjectileData = _data;
+        m_ProjectileData = _data as ProjectileData;
     }
 }
