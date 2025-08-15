@@ -48,7 +48,7 @@ public class Actor : MonoBehaviour
         }
     }
 
-    public void PullObject(Vector3 _vec3, Vector3 _targetPos, float _power, float _stopDistance)
+    public void SetPullObject(Vector3 _vec3, Vector3 _targetPos, float _power, float _stopDistance)
     {
         _vec3.y = 0.0f;
         m_IsPull = true;
