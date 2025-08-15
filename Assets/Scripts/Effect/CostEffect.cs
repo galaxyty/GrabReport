@@ -13,7 +13,7 @@ public class CostEffect : Effect
         Debug.Log("³²Àº MP : " + source.Mp);
     }
 
-    public void SetCostData(CostData _data)
+    public void SetData(CostData _data)
     {
         CostData = _data;
     }

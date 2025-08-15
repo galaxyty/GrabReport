@@ -22,13 +22,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private CostData m_GrabCostData;
 
-    [Header("그랩 투사체 데이터")]
-    [SerializeField]
-    private ProjectileData m_GrabProjectileData;
-
-    [Header("그랩 끌어당기는 데이터")]
-    [SerializeField]
-    private PullData m_GrabPullData;
+    // 마나 사용 스킬 클래스.
+    private CostSkill m_CostSkill = new CostSkill();
 
     // 그랩.
     private Grab m_Grab;    
@@ -46,13 +41,14 @@ public class Player : MonoBehaviour
 
         m_Grab.PlayerActor = m_Actor;
 
-        // 그랩 데이터 셋팅.
-        m_Grab.SetCostData(m_GrabCostData);
-        m_Grab.SetProjectileData(m_GrabProjectileData);
-        m_Grab.SetPullData(m_GrabPullData);
+        // 그랩 마나소모 데이터 셋팅.
+        m_CostSkill.SetData(m_GrabCostData);
 
-        // 그랩 스킬효과 셋팅.
-        m_Grab.GrabSkill.SetEffect();
+        // 그랩 마나소모 스킬효과 셋팅.
+        m_CostSkill.SetEffect();
+
+        // 그랩 투사체 데이터랑 스킬효과 셋팅.
+        m_Grab.SetData();
     }
 
     // Update is called once per frame
@@ -72,9 +68,13 @@ public class Player : MonoBehaviour
     // 좌클릭.
     private void OnFire()
     {
-        m_Grab.transform.localPosition = m_FireTransform.position;
-        m_Grab.gameObject.SetActive(true);
-        m_Grab.GrabSkill.ApplySkill(m_Actor, null);
+        // 그랩 스킬 발동 조건 확인.
+        if (m_CostSkill.ApplySkill(m_Actor, null) == true)
+        {
+            // 조건이 만족되면 스킬을 발동함.
+            m_Grab.transform.localPosition = m_FireTransform.position;
+            m_Grab.gameObject.SetActive(true);
+        }        
     }
 
     // 마우스 회전.

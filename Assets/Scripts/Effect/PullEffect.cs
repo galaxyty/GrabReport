@@ -16,7 +16,7 @@ public class PullEffect : Effect
         Debug.Log("²ø¾î´ç±â±â");
     }
 
-    public void SetPullData(PullData _data)
+    public void SetData(PullData _data)
     {
         PullData = _data;
     }

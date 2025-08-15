@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2198849308937963233}
   - component: {fileID: -8905355416232337065}
   - component: {fileID: 4959819360735043564}
+  - component: {fileID: 6543914782908052024}
   m_Layer: 0
   m_Name: Grab
   m_TagString: Untagged
@@ -119,7 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd48f2f922b3484489901fe03168ad1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GrabData: {fileID: 11400000, guid: 41bee8e3407f1f949a1302e6599528b3, type: 2}
+  m_GrabProjectileData: {fileID: 11400000, guid: 7adb994b7d841604b9d53cf42aa80656, type: 2}
+  m_GrabPullData: {fileID: 11400000, guid: 11c0c753ee5beec4999f601a1d83f955, type: 2}
+  m_Actor: {fileID: 6543914782908052024}
   PlayerActor: {fileID: 0}
 --- !u!54 &4959819360735043564
 Rigidbody:
@@ -148,3 +151,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6543914782908052024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5394003414308043879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c1e138342fa054db6bfd83cfa2959d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

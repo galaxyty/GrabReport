@@ -60,9 +60,9 @@
     <Analyzer Include="C:\Program Files\Unity 2022.3.45f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Skill\CostSkill.cs" />
     <Compile Include="Assets\Scripts\Effect.cs" />
     <Compile Include="Assets\Scripts\Effect\CostEffect.cs" />
-    <Compile Include="Assets\Scripts\Skill\GrabSkill.cs" />
     <Compile Include="Assets\Scripts\Effect\PullEffect.cs" />
     <Compile Include="Assets\Scripts\Effect\ProjectileEffect.cs" />
     <Compile Include="Assets\ScriptableData\CostData.cs" />
@@ -70,7 +70,9 @@
     <Compile Include="Assets\Scripts\Actor.cs" />
     <Compile Include="Assets\ScriptableData\ProjectileData.cs" />
     <Compile Include="Assets\Scripts\Skill.cs" />
+    <Compile Include="Assets\Scripts\Skill\PullSkill.cs" />
     <Compile Include="Assets\ScriptableData\PullData.cs" />
+    <Compile Include="Assets\Scripts\Skill\ProjectileSkill.cs" />
     <Compile Include="Assets\Scripts\Grab.cs" />
   </ItemGroup>
   <ItemGroup>

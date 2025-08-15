@@ -4,37 +4,35 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Grab : MonoBehaviour
-{    
-    // 그랩 스킬 클래스.
-    private Skill m_GrabSkill = new GrabSkill();
+{
+    [Header("그랩 투사체 데이터")]
+    [SerializeField]
+    private ProjectileData m_GrabProjectileData;
 
-    public Skill GrabSkill
-    {
-        get
-        {
-            return m_GrabSkill;
-        }
-        private set { }
-    }
+    [Header("그랩 끌어오기 데이터")]
+    [SerializeField]
+    private PullData m_GrabPullData;
 
+    [SerializeField]
+    private Actor m_Actor;  
+
+    // 투사체 발사 스킬 클래스.
+    private ProjectileSkill m_ProjectileSkill = new();
+
+    // 끌어오기 스킬 클래스.    
+    private PullSkill m_PullSkill = new();
+
+    [HideInInspector]
     public Actor PlayerActor;
 
-    public void SetCostData(CostData _data)
+    // 투사체 셋팅.
+    public void SetData()
     {
-        GrabSkill grabSkill = m_GrabSkill as GrabSkill;
-        grabSkill.SetCostData(_data);
-    }
+        m_ProjectileSkill.SetData(m_GrabProjectileData);
+        m_ProjectileSkill.SetEffect();
 
-    public void SetProjectileData(ProjectileData _data)
-    {
-        GrabSkill grabSkill = m_GrabSkill as GrabSkill;
-        grabSkill.SetProjectileData(_data);
-    }
-
-    public void SetPullData(PullData _data)
-    {
-        GrabSkill grabSkill = m_GrabSkill as GrabSkill;
-        grabSkill.SetPullData(_data);
+        m_PullSkill.SetData(m_GrabPullData);
+        m_PullSkill.SetEffect();
     }
 
     private void OnEnable()
@@ -45,15 +43,8 @@ public class Grab : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
-        //if (Vector3.Distance(PlayerActor.transform.position, transform.position) >= m_GrabData.Distance)
-        //{
-        //    gameObject.SetActive(false);
-        //}
-        //else
-        //{            
-        //    transform.Translate(-Vector3.back * m_GrabData.MoveSpeed * Time.deltaTime);
-        //}        
+    {
+        m_ProjectileSkill.ApplySkill(m_Actor, PlayerActor);              
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -61,7 +52,7 @@ public class Grab : MonoBehaviour
         // 임시 방편. 이름으로 확인 시킴
         if (collision.gameObject.name.Equals("EnemyCapsule"))
         {
-            m_GrabSkill.ApplySkill(PlayerActor, collision.gameObject.GetComponent<Actor>());
+            m_PullSkill.ApplySkill(PlayerActor, collision.gameObject.GetComponent<Actor>());
             gameObject.SetActive(false);
         }
     }
